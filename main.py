@@ -15,6 +15,7 @@ screen.title("Turtle crossing")
 
 player = Player()
 car_manager = CarManager()
+scoreboard = Scoreboard
 
 screen.listen()
 screen.onkey(player.move,"Up")
@@ -38,7 +39,7 @@ while game_on:
     if player.resetTurtle():
         player.go_to_start()
         car_manager.level_up()
-        # scoreboard.increase_level()
+        scoreboard.increase_level()
 
     
 
