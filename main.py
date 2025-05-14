@@ -1,20 +1,20 @@
-# TODO - reset car position after level clear
+# TODO/done - reset car position after level clear
 # TODO/done - create multiple car objects
-# TODO - detect collision with cars
+# TODO/done - detect collision with cars
 # TODO - scoreboard
 
 import time
 from turtle import Turtle,Screen
 from player import Player
 from scoreboard import Scoreboard
-from car import Car
+from car_manager import CarManager
 screen = Screen()
 screen.setup(width=700,height=500)
 screen.tracer(0)
 screen.title("Turtle crossing")
 
 player = Player()
-car = Car()
+car_manager = CarManager()
 
 screen.listen()
 screen.onkey(player.move,"Up")
@@ -24,13 +24,21 @@ while game_on:
     time.sleep(0.1)
     screen.update()
 
-    car.create_car()
-    car.move()
+    car_manager.create_car()
+    car_manager.move()
 
     screen.update()
 
-    # if player.ycor()>240:
-    #     car_speed -=0.05
+    #detect colllsion
+    for car in car_manager.all_cars:
+        if car.distance(player)<30:
+            game_on=False
+            # scoreboard.game_over()
+
+    if player.resetTurtle():
+        player.go_to_start()
+        car_manager.level_up()
+        # scoreboard.increase_level()
 
     
 
