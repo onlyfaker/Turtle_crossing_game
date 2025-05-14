@@ -15,7 +15,7 @@ screen.title("Turtle crossing")
 
 player = Player()
 car_manager = CarManager()
-scoreboard = Scoreboard
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(player.move,"Up")
