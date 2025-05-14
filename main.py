@@ -1,5 +1,5 @@
 # TODO - reset car position after level clear
-# TODO - create multiple car objects
+# TODO/done - create multiple car objects
 # TODO - detect collision with cars
 # TODO - scoreboard
 
@@ -19,22 +19,20 @@ car = Car()
 screen.listen()
 screen.onkey(player.move,"Up")
 
-car_speed = 0.1
 game_on=True
 while game_on:
-    time.sleep(car_speed)
-    screen.update()
-    car.move()
+    time.sleep(0.1)
     screen.update()
 
-    if player.ycor()>240:
-        car_speed -=0.05
+    car.create_car()
+    car.move()
+
+    screen.update()
+
+    # if player.ycor()>240:
+    #     car_speed -=0.05
 
     
-
-
-
-
 
 
 screen.exitonclick()
